@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<elements>
+    
+    <!--Feature-->
+
+    <element name="Fighting Maneuvers" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_FIGHTINGSTYLE_FIGHTING_MANEUVERS">
+		<supports>Fighting Style, Fighter, Paladin, Artificer, Ranger, Warlord_Paragon</supports>
+        <requirements>!ID_WOTC_PHB_ARCHETYPE_FIGHTER_BATTLE_MASTER</requirements>
+		<description>
+			<p>The maneuvers you learn from these fighting styles (detailed in the Maneuvers section below) are intricate and only one can be performed per turn.</p>
+            <p class="indent">Some of your maneuvers require the target to make a saving throw to resist the maneuvers effects. The saving throw is calculated as:</p>
+            <center>
+                <p><strong>Maneuver save DC</strong> = 8 + your proficiency bonus + your Strength of Dexterity modifier (your choice)</p>
+            </center>
+            <p class='indent'>Each time you gain a level in this class, you can choose one maneuver that you know and replace it with another maneuver of your choice.</p>
+		</description>
+		<sheet>
+			<description requirements="!ID_WOTC_PHB_CLASS_FIGHTER">Your Maneuver save DC is {{vdp maneuver save:dc}}. Only one can be performed per turn.</description>
+            <description requirements="ID_WOTC_PHB_CLASS_FIGHTER" level="1">Your Maneuver save DC is {{vdp maneuver save:dc}}. Only one can be performed per turn.</description>
+            <description requirements="ID_WOTC_PHB_CLASS_FIGHTER" level="2">Your Maneuver save DC is {{vdp maneuver save:dc}}. Only one can be performed per turn. When you use your Action Surge ability, you can perform two maneuvers instead of one.</description>
+		</sheet>
+        <rules>
+            <select type="Class Feature" name="Fighting Maneuvers" supports="VDP Maneuver" number="2" />
+            <select type="Class Feature" name="Fighting Maneuvers" supports="VDP Maneuver" number="2" requirements="ID_WOTC_PHB_CLASS_FIGHTER" />
+            <stat name="vdp maneuver save:dc" value="8" />
+            <stat name="vdp maneuver save:dc" value="proficiency" />
+            <stat name="vdp maneuver save:stat" value="strength:modifier" bonus="stat" />
+            <stat name="vdp maneuver save:stat" value="dexterity:modifier" bonus="stat" />
+            <stat name="vdp maneuver save:dc" value="vdp maneuver save:stat" />
+        </rules>
+	</element>
+
+    <!--Fighter Revisions-->
+
+    <element name="Champion (Revised)" type="Archetype" source="VDP Fighting Maneuvers" id="ID_VDP_ARCHETYPE_CHAMPION">
+        <supports>Martial Archetype</supports>
+        <requirements>ID_VDP_CLASS_FEATURE_FIGHTINGSTYLE_FIGHTING_MANEUVERS</requirements>
+        <description>
+            <p><strong>USE IN PLACE OF ORIGINAL CHAMPION</strong></p>
+            <p>The archetypal Champion focuses on the development of raw physical power honed to deadly perfection. Those who model themselves on this archetype combine rigorous training with physical excellence to deal devastating blows.</p>
+            <div element="ID_VDP_ARCHETYPE_FEATURE_CHAMPION_CHAMPION_MANEUVERS" />
+            <div element="ID_VDP_ARCHETYPE_FEATURE_CHAMPION_IMPROVED_CRITICAL" />
+            <div element="ID_VDP_ARCHETYPE_FEATURE_CHAMPION_REMARKABLE_ATHLETE" />
+            <div element="ID_VDP_ARCHETYPE_FEATURE_CHAMPION_EXCEPTIONAL_FIGHTING_STYLE" />
+            <div element="ID_VDP_ARCHETYPE_FEATURE_CHAMPION_SUPERIOR_CRITICAL" />
+            <div element="ID_VDP_ARCHETYPE_FEATURE_CHAMPION_SURVIVOR" />
+        </description>
+        <sheet display="false">
+            <description>The archetypal Champion focuses on the development of raw physical power honed to deadly perfection.</description>
+        </sheet>
+        <rules>
+            <grant type="Archetype Feature" id="ID_VDP_ARCHETYPE_FEATURE_CHAMPION_CHAMPION_MANEUVERS" level="3" />
+            <grant type="Archetype Feature" id="ID_VDP_ARCHETYPE_FEATURE_CHAMPION_IMPROVED_CRITICAL" level="3" />
+            <grant type="Archetype Feature" id="ID_VDP_ARCHETYPE_FEATURE_CHAMPION_REMARKABLE_ATHLETE" level="7" />
+            <grant type="Archetype Feature" id="ID_VDP_ARCHETYPE_FEATURE_CHAMPION_EXCEPTIONAL_FIGHTING_STYLE" level="10" />
+            <grant type="Archetype Feature" id="ID_VDP_ARCHETYPE_FEATURE_CHAMPION_SUPERIOR_CRITICAL" level="15" />
+            <grant type="Archetype Feature" id="ID_VDP_ARCHETYPE_FEATURE_CHAMPION_SURVIVOR" level="18" />
+        </rules>
+    </element>
+    <element name="Champion Maneuvers" type="Archetype Feature" source="VDP Fighting Maneuvers" id="ID_VDP_ARCHETYPE_FEATURE_CHAMPION_CHAMPION_MANEUVERS">
+        <description>
+            <p>Below are two additionals maneuvers that a Champion learns upon reaching 3rd level.</p>
+            <p class="indent"><strong><em>Exploit.</em></strong> When a creature that you can see within 5 feet of you is grappled or knocked prone, you can use yourreaction to make an unarmed strike against that creature.</p>
+            <p class="indent"><strong><em>Gang Tactics.</em></strong> After a friendly creature that you can see or hear hits a creature that is within 5 feet of you with an attack, you can use your reaction to attempt to shove or grapple that creature.</p>
+        </description>
+        <sheet display="false" />
+        <rules>
+            <grant type="Class Feature" id="ID_VDP_CLASS_FEATURE_MANEUVERS_EXPLOIT" level="3" />
+            <grant type="Class Feature" id="ID_VDP_CLASS_FEATURE_MANEUVERS_GANG_TACTICS" level="3" />
+        </rules>
+    </element>
+    <element name="Exploit" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_EXPLOIT">
+        <description>
+            <p>When a creature that you can see within 5 feet of you is grappled or knocked prone, you can use your reaction to make an unarmed strike against that creature.</p>
+        </description>
+        <sheet>
+            <description action="Reaction" usage="Fighting Maneuver">When a creature that you can see within 5 feet of you is grappled or knocked prone, you can use your reaction to make an unarmed strike against that creature.</description>
+        </sheet>
+    </element>
+    <element name="Gang Tactics" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_GANG_TACTICS">
+        <description>
+            <p>After a friendly creature that you can see or hear hits a creature that is within 5 feet of you with an attack, you can use your reaction to attempt to shove or grapple that creature.</p>
+        </description>
+        <sheet>
+            <description action="Reaction" usage="Fighting Maneuver">After a friendly creature that you can see or hear hits a creature that is within 5 feet of you with an attack, you can use your reaction to attempt to shove or grapple that creature.</description>
+        </sheet>
+    </element>
+    <element name="Improved Critical" type="Archetype Feature" source="VDP Fighting Maneuvers" id="ID_VDP_ARCHETYPE_FEATURE_CHAMPION_IMPROVED_CRITICAL">
+        <description>
+            <p>Beginning when you choose this archetype at 3rd level, your weapon attacks score a critical hit on a roll of 19 or 20.</p>
+        </description>
+        <sheet>
+            <description level="3">Your weapon attacks score a critical hit on a roll of 19 or 20.</description>
+            <description level="15">Your weapon attacks score a critical hit on a roll of 18-20.</description>
+        </sheet>
+    </element>
+    <element name="Remarkable Athlete" type="Archetype Feature" source="VDP Fighting Maneuvers" id="ID_VDP_ARCHETYPE_FEATURE_CHAMPION_REMARKABLE_ATHLETE">
+        <description>
+            <p>Starting at 7th level, when you make a Strength, Dexterity, or Constitution check that you are proficient in, you can choose to add double your proficiency bonus to that check.</p>
+            <p class="indent">Once you use this feature, you must finish a short or long rest before you can use it again. You regain the use of this feature early when you use your Action Surge feature.</p>
+        </description>
+        <sheet>
+            <description>When you make a Strength, Dexterity, or Constitution check that you are proficient in, you can choose to add double your proficiency bonus to that check. Once you use this feature, you must finish a short or long rest before you can use it again. You regain the use of this feature early when you use your Action Surge feature.</description>
+        </sheet>
+    </element>
+    <element name="Exceptional Fighting Style" type="Archetype Feature" source="VDP Fighting Maneuvers" id="ID_VDP_ARCHETYPE_FEATURE_CHAMPION_EXCEPTIONAL_FIGHTING_STYLE">
+        <description>
+            <p>At 10th level, your maneuvers become deadly in their own right. Whenever a creature fails a saving throw to resist the effects of one of your maneuvers, or you make a successful attack roll against a creature as part of a maneuver, you can choose to deal damage to a single target of that maneuver equal to 1d4 + your Strength or Dexterity modifier (your choice). The type of this damage is a type that a weapon you’re wielding could deal, or bludgeoning if you are wielding no weapons.</p>
+        </description>
+        <sheet>
+            <description>Whenever a creature fails a saving throw to resist the effects of one of your maneuvers, or you make a successful attack roll against a creature as part of a maneuver, you can choose to deal damage to a single target of that maneuver equal to 1d4 + {{vdp maneuver save:stat}}. The type of this damage is a type that a weapon you’re wielding could deal, or bludgeoning if you are wielding no weapons.</description>
+        </sheet>
+    </element>
+    <element name="Superior Critical" type="Archetype Feature" source="VDP Fighting Maneuvers" id="ID_VDP_ARCHETYPE_FEATURE_CHAMPION_SUPERIOR_CRITICAL">
+        <description>
+            <p>Starting at 15th level, your weapon attacks score a critical hit on a roll of 18-20.</p>
+        </description>
+        <sheet display="false" />
+    </element>
+    <element name="Champion Survivor" type="Archetype Feature" source="VDP Fighting Maneuvers" id="ID_VDP_ARCHETYPE_FEATURE_CHAMPION_SURVIVOR">
+        <description>
+            <p>At 18th level, you attain the pinnacle of resilence in battle. At the start of each of your turns, you regain hit points equal to 5 + your Constitution modifier if you have no more than half of your hit points left. You don’t gain this benefit if you have 0 hit points.</p>
+            <p class="indent">Additionally, when you are reduced to 0 hit points and don’t die outright, you are immediately stabilized.</p>
+        </description>
+        <sheet>
+            <description>At the start of each of your turns, you regain {{champion survivor:hp}} hit points if you have no more than half of your hit points left. You don’t gain this benefit if you have 0 hit points. Additionally, when you are reduced to 0 hit points and don’t die outright, you are immediately stabilized.</description>
+        </sheet>
+        <rules>
+            <stat name="champion survivor:hp" value="5" />
+            <stat name="champion survivor:hp" value="constitution:modifier" />
+        </rules>
+    </element>
+
+    <!--Other Fighters-->
+
+    <append id="ID_WOTC_PHB_ARCHETYPE_FIGHTER_ELDRITCH_KNIGHT">
+        <rules>
+            <grant type="Class Feature" id="ID_VDP_CLASS_FEATURE_MANEUVERS_ELDRITCH_KNIGHT" level="3" requirements="ID_VDP_CLASS_FEATURE_FIGHTINGSTYLE_FIGHTING_MANEUVERS" />
+        </rules>
+    </append>
+    <element name="Additional Maneuvers" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_ELDRITCH_KNIGHT">
+        <description>
+            <p>Below are two additional maneuvers that an Eldritch Knight learns upon reaching 3rd level.</p>
+            <p class="indent"><strong><em>Arcane Blade.</em></strong> After casting a spell of 1st-level or higher, you can use your reaction to reclaim lingering magic and enchant your blade. Your next weapon attack before the end of your next turn is magical and deals an additional 1d8 force damage.</p>
+            <p class="indent"><strong><em>Expel Magic.</em></strong> While concentrating on a spell of 1st-level or higher, you use your bonus action to release that energy, ending the concentration early and dealing force damage to creatures of your choice within 10 feet of you. This damage equals 1d6 per level of the spell slot spent on the spell when it was cast.</p>
+        </description>
+        <sheet display="false" />
+        <rules>
+            <grant type="Class Feature" id="ID_VDP_CLASS_FEATURE_MANEUVERS_ARCANE_BLADE" level="3" />
+            <grant type="Class Feature" id="ID_VDP_CLASS_FEATURE_MANEUVERS_EXPEL_MAGIC" level="3" />
+        </rules>
+    </element>
+    <element name="Arcane Blade" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_ARCANE_BLADE">
+        <description>
+            <p>After casting a spell of 1st-level or higher, you can use your reaction to reclaim lingering magic and enchant your blade. Your next weapon attack before the end of your next turn is magical and deals an additional 1d8 force damage.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">After casting a spell of 1st-level or higher, you can use your reaction to reclaim lingering magic and enchant your blade. Your next weapon attack before the end of your next turn is magical and deals an additional 1d8 force damage.</description>
+        </sheet>
+    </element>
+    <element name="Expel Magic" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_EXPEL_MAGIC">
+        <description>
+            <p>While concentrating on a spell of 1st-level or higher, you use your bonus action to release that energy, ending the concentration early and dealing force damage to creatures of your choice within 10 feet of you. This damage equals 1d6 per level of the spell slot spent on the spell when it was cast.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">While concentrating on a spell of 1st-level or higher, you use your bonus action to release that energy, ending the concentration early and dealing force damage to creatures of your choice within 10 feet of you. This damage equals 1d6 per level of the spell slot spent on the spell when it was cast.</description>
+        </sheet>
+    </element>
+
+    <append id="ID_WOTC_XGTE_ARCHETYPE_FIGHTER_ARCANE_ARCHER">
+        <rules>
+            <grant type="Class Feature" id="ID_VDP_CLASS_FEATURE_MANEUVERS_ARCANE_ARCHER" level="3" requirements="ID_VDP_CLASS_FEATURE_FIGHTINGSTYLE_FIGHTING_MANEUVERS" />
+        </rules>
+    </append>
+    <element name="Additional Maneuvers" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_ARCANE_ARCHER">
+        <description>
+            <p>Below are two additional maneuvers that an Arcane Archer learns upon reaching 3rd level.</p>
+            <p class="indent"><strong><em>Grounding Strike.</em></strong> When you take the Attack action on your turn and make a ranged attack, you can choose to deal no damage and instead attempt to force a flying creature to the ground. On hit, the target must make a Strength saving throw. On a failed save, their flying speed becomes 0 until the end of their next turn. On a successful save, their flying speed is instead halved until the end of their next turn. In either case, at the start of their next turn they immediately descend 60 feet safely towards the ground.</p>
+            <p class="indent"><strong><em>Hidden Strike.</em></strong> When making a ranged attack against a creature that cannot see you, you can imbue your attack with a small amount of illusion magic to disguise your location. You do not give away your location with this attack.</p>
+        </description>
+        <sheet display="false" />
+        <rules>
+            <grant type="Class Feature" id="ID_VDP_CLASS_FEATURE_MANEUVERS_GROUNDING_STRIKE" level="3" />
+            <grant type="Class Feature" id="ID_VDP_CLASS_FEATURE_MANEUVERS_HIDDEN_STRIKE" level="3" />
+        </rules>
+    </element>
+    <element name="Grounding Strike" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_GROUNDING_STRIKE">
+        <description>
+            <p>When you take the Attack action on your turn and make a ranged attack, you can choose to deal no damage and instead attempt to force a flying creature to the ground. On hit, the target must make a Strength saving throw. On a failed save, their flying speed becomes 0 until the end of their next turn. On a successful save, their flying speed is instead halved until the end of their next turn. In either case, at the start of their next turn they immediately descend 60 feet safely towards the ground.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">When you take the Attack action on your turn and make a ranged attack, you can choose to deal no damage and instead attempt to force a flying creature to the ground. On hit, the target must make a Strength saving throw. On a failed save, their flying speed becomes 0 until the end of their next turn. On a successful save, their flying speed is instead halved until the end of their next turn. In either case, at the start of their next turn they immediately descend 60 feet safely towards the ground.</description>
+        </sheet>
+    </element>
+    <element name="Hidden Strike" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_HIDDEN_STRIKE">
+        <description>
+            <p>When making a ranged attack against a creature that cannot see you, you can imbue your attack with a small amount of illusion magic to disguise your location. You do not give away your location with this attack.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">When making a ranged attack against a creature that cannot see you, you can imbue your attack with a small amount of illusion magic to disguise your location. You do not give away your location with this attack.</description>
+        </sheet>
+    </element>
+
+    <append id="ID_WOTC_XGTE_ARCHETYPE_FIGHTER_CAVALIER">
+        <rules>
+            <grant type="Class Feature" id="ID_VDP_CLASS_FEATURE_MANEUVERS_CAVALIER" level="3" requirements="ID_VDP_CLASS_FEATURE_FIGHTINGSTYLE_FIGHTING_MANEUVERS" />
+        </rules>
+    </append>
+    <element name="Additional Maneuvers" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_CAVALIER">
+        <description>
+            <p>Below are two additional maneuvers that a Cavalier learns upon reaching 3rd level.</p>
+            <p class="indent"><strong><em>Call to Arms.</em></strong> While not mounted, as a bonus action you can whistle or otherwise call to a mount you’re sufficiently familiar with or have mounted for at least an hour in the last 24 hours. You make an audible noise that if the creature can hear, it can immediately use its reaction to move towards you at double its speed.</p>
+            <p class="indent"><strong><em>Pursuit.</em></strong> When a creature marked by you uses their movement to move to a space 15 feet away from you or more, you can use your reaction at the end of their movement to move up to your movement speed closer to them.</p>
+        </description>
+        <sheet display="false" />
+        <rules>
+            <grant type="Class Feature" id="ID_VDP_CLASS_FEATURE_MANEUVERS_CALL_TO_ARMS" level="3" />
+            <grant type="Class Feature" id="ID_VDP_CLASS_FEATURE_MANEUVERS_PURSUIT" level="3" />
+        </rules>
+    </element>
+    <element name="Call to Arms" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_CALL_TO_ARMS">
+        <description>
+            <p>While not mounted, as a bonus action you can whistle or otherwise call to a mount you’re sufficiently familiar with or have mounted for at least an hour in the last 24 hours. You make an audible noise that if the creature can hear, it can immediately use its reaction to move towards you at double its speed.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">While not mounted, as a bonus action you can whistle or otherwise call to a mount you’re sufficiently familiar with or have mounted for at least an hour in the last 24 hours. You make an audible noise that if the creature can hear, it can immediately use its reaction to move towards you at double its speed.</description>
+        </sheet>
+    </element>
+    <element name="Pursuit" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_PURSUIT">
+        <description>
+            <p>When a creature marked by you uses their movement to move to a space 15 feet away from you or more, you can use your reaction at the end of their movement to move up to your movement speed closer to them.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">When a creature marked by you uses their movement to move to a space 15 feet away from you or more, you can use your reaction at the end of their movement to move up to your movement speed closer to them.</description>
+        </sheet>
+    </element>
+
+    <append id="ID_WOTC_XGTE_ARCHETYPE_FIGHTER_SAMURAI">
+        <rules>
+            <grant type="Class Feature" id="ID_VDP_CLASS_FEATURE_MANEUVERS_SAMURAI" level="3" requirements="ID_VDP_CLASS_FEATURE_FIGHTINGSTYLE_FIGHTING_MANEUVERS" />
+        </rules>
+    </append>
+    <element name="Additional Maneuvers" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_SAMURAI">
+        <description>
+            <p>Below are two additional maneuvers that a Samurai learns upon reaching 3rd level.</p>
+            <p class="indent"><strong><em>Dancing Blade.</em></strong> When you take the Attack action on your turn and have advantage on an attack roll against a creature, you can forgo the advantage for that roll to attempt a disorienting and elaborate strike. If that attack hits, the target cannot take any reactions until the end of its next turn.</p>
+            <p class="indent"><strong><em>Debonair Death.</em></strong> When you take damage that reduces you to 0 hit points and doesn’t kill you outright, you can use your reaction to make a weapon attack against the creature that reduced you to 0 hit points.</p>
+        </description>
+        <sheet display="false" />
+        <rules>
+            <grant type="Class Feature" id="ID_VDP_CLASS_FEATURE_MANEUVERS_DANCING_BLADE" level="3" />
+            <grant type="Class Feature" id="ID_VDP_CLASS_FEATURE_MANEUVERS_DEBONAIR_DEATH" level="3" />
+        </rules>
+    </element>
+    <element name="Dancing Blade" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_DANCING_BLADE">
+        <description>
+            <p>When you take the Attack action on your turn and have advantage on an attack roll against a creature, you can forgo the advantage for that roll to attempt a disorienting and elaborate strike. If that attack hits, the target cannot take any reactions until the end of its next turn.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">When you take the Attack action on your turn and have advantage on an attack roll against a creature, you can forgo the advantage for that roll to attempt a disorienting and elaborate strike. If that attack hits, the target cannot take any reactions until the end of its next turn.</description>
+        </sheet>
+    </element>
+    <element name="Debonair Death" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_DEBONAIR_DEATH">
+        <description>
+            <p>When you take damage that reduces you to 0 hit points and doesn’t kill you outright, you can use your reaction to make a weapon attack against the creature that reduced you to 0 hit points.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">When you take damage that reduces you to 0 hit points and doesn’t kill you outright, you can use your reaction to make a weapon attack against the creature that reduced you to 0 hit points.</description>
+        </sheet>
+    </element>
+
+    <!--Maneuvers-->
+
+    <element name="Arresting Attack" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_ARRESTING_ATTACK">
+        <supports>VDP Maneuver</supports>
+        <description>
+            <p>When making an attack with a weapon with the reach property against a creature no more than one size larger than you, you can choose to arrest the target instead of making a normal weapon attack. Make a Strength (Athletics) check contested by the target’s Strength (Athletics) or Dexterity (Acrobatics) check (the target chooses the ability to use). If you win the contest, you either knock the target prone or pull it 5 feet closer to you.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">When making an attack with a weapon with the reach property against a creature no more than one size larger than you, you can choose to arrest the target instead of making a normal weapon attack. Make a Strength (Athletics) check contested by the target’s Strength (Athletics) or Dexterity (Acrobatics) check (the target chooses the ability to use). If you win the contest, you either knock the target prone or pull it 5 feet closer to you.</description>
+        </sheet>
+    </element>
+    <element name="Disarming Attack" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_DISARMING_ATTACK">
+        <supports>VDP Maneuver</supports>
+        <description>
+            <p>When you take the Attack action on your turn, you can forgo one of your attacks to attempt to disarm a creature within 5 feet, forcing it to drop one item of your choice that it’s holding. The target must make a Strength saving throw. On a failed save, they drop the object you choose. The object lands at their feet.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">When you take the Attack action on your turn, you can forgo one of your attacks to attempt to disarm a creature within 5 feet, forcing it to drop one item of your choice that it’s holding. The target must make a Strength saving throw. On a failed save, they drop the object you choose. The object lands at their feet.</description>
+        </sheet>
+    </element>
+    <element name="Goading Attakc" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_GOADING_ATTACK">
+        <supports>VDP Maneuver</supports>
+        <description>
+            <p>When you take the Attack action on your turn, you can forgo one of your attacks and attempt to goad a creature within 5 feet into attacking you. That creature must make a Wisdom saving throw. On a failed save, the target has disadvantage on the first attack roll they make before the end of your next turn that doesn’t include you as a target.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">When you take the Attack action on your turn, you can forgo one of your attacks and attempt to goad a creature within 5 feet into attacking you. That creature must make a Wisdom saving throw. On a failed save, the target has disadvantage on the first attack roll they make before the end of your next turn that doesn’t include you as a target.</description>
+        </sheet>
+    </element>
+    <element name="Grab Hold" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_GRAB_HOLD">
+        <supports>VDP Maneuver</supports>
+        <description>
+            <p>When you take the Attack action on your turn and attack with a single melee weapon and nothing in your other hand, you can use your bonus action to attempt to grapple a target that you hit with an attack this turn.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">When you take the Attack action on your turn and attack with a single melee weapon and nothing in your other hand, you can use your bonus action to attempt to grapple a target that you hit with an attack this turn.</description>
+        </sheet>
+    </element>
+    <element name="Menacing Attack" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_MENACING_ATTACK">
+        <supports>VDP Maneuver</supports>
+        <description>
+            <p>When you hit a creature with a heavy melee weapon attack, instead of dealing weapon damage you can attempt to frigthen the target. The target must make a Wisdom saving throw. On a failed save, they are frightened of you until the end of your next turn.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">When you hit a creature with a heavy melee weapon attack, instead of dealing weapon damage you can attempt to frigthen the target. The target must make a Wisdom saving throw. On a failed save, they are frightened of you until the end of your next turn.</description>
+        </sheet>
+    </element>
+    <element name="Parry" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_PARRY">
+        <supports>VDP Maneuver</supports>
+        <description>
+            <p>If you take the Attack action on your turn and attack with a single melee weapon and no shield, you can use your bonus action to ready a parrying maneuver. You have a bonus to your AC equal to your Strength or Dexterity modifier (your choice) against the first melee attack made against you before the start of your next turn.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">If you take the Attack action on your turn and attack with a single melee weapon and no shield, you can use your bonus action to ready a parrying maneuver. You have a bonus to your AC of {{vdp maneuver save:stat}} against the first melee attack made against you before the start of your next turn.</description>
+        </sheet>
+    </element>
+    <element name="Patient Strike" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_PATIENT_STRIKE">
+        <supports>VDP Maneuver</supports>
+        <description>
+            <p>When you take the Attack action on your turn, you can choose to forgo an attack to prepare for the movements of one creature of your choice that you can see. Until the start of your next turn, that creature provokes opportunity attacks from you if they enter your reach. In addition, you have advantage on opportunity attacks against that creature.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">When you take the Attack action on your turn, you can choose to forgo an attack to prepare for the movements of one creature of your choice that you can see. Until the start of your next turn, that creature provokes opportunity attacks from you if they enter your reach. In addition, you have advantage on opportunity attacks against that creature.</description>
+        </sheet>
+    </element>
+    <element name="Power Attack" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_POWER_ATTACK">
+        <supports>VDP Maneuver</supports>
+        <description>
+            <p>When you take the Attack action on your turn and make a melee attack with a heavy weapon against a creature that has advantage, you can choose to forgo advantage and make a more powerful strike. If you hit, you deal additional damage equal to your proficiency bonus.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">When you take the Attack action on your turn and make a melee attack with a heavy weapon against a creature that has advantage, you can choose to forgo advantage and make a more powerful strike. If you hit, you deal additional {{proficiency}} damage.</description>
+        </sheet>
+    </element>
+    <element name="Precision Aim" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_PRECISION_AIM">
+        <supports>VDP Maneuver</supports>
+        <description>
+            <p>When you take the Attack action on your turn and make a ranged weapon attack against a creature with disadvantage, you can choose to ignore disadvantage as you make a more precise strike. If you hit, you do not add your ability modifier to the damage dealt by this attack.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">When you take the Attack action on your turn and make a ranged weapon attack against a creature with disadvantage, you can choose to ignore disadvantage as you make a more precise strike. If you hit, you do not add your ability modifier to the damage dealt by this attack.</description>
+        </sheet>
+    </element>
+    <element name="Pushing Attack" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_PUSHING_ATTACK">
+        <supports>VDP Maneuver</supports>
+        <description>
+            <p>When you hit a creature with a melee weapon attack while wielding a shield, you can attempt to drive the target back. If the target is Large or smaller, you can push the target up to 5 feet away from you.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">When you hit a creature with a melee weapon attack while wielding a shield, you can attempt to drive the target back. If the target is Large or smaller, you can push the target up to 5 feet away from you.</description>
+        </sheet>
+    </element>
+    <element name="Rally" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_RALLY">
+        <supports>VDP Maneuver</supports>
+        <description>
+            <p>On your turn, you can use a bonus action to bolster the resolve of one of your companions by banging on your armor or shield. When you do so, choose a friendly creature within 15 feet that can see or hear you. That creature gains temporary hit points equal to your Charisma modifier (a minimum of 1) which last until the end of their next turn.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">On your turn, you can use a bonus action to bolster the resolve of one of your companions by banging on your armor or shield. When you do so, choose a friendly creature within 15 feet that can see or hear you. That creature gains {{charisma:modifier}} temporary hit points (a minimum of 1) which last until the end of their next turn.</description>
+        </sheet>
+    </element>
+    <element name="Rapid Fire" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_RAPID_FIRE">
+        <supports>VDP Maneuver</supports>
+        <description>
+            <p>When you make a ranged weapon attack and miss, you can use your bonus action to quickly make another attack against the same target with disadvantage.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">When you make a ranged weapon attack and miss, you can use your bonus action to quickly make another attack against the same target with disadvantage.</description>
+        </sheet>
+    </element>
+    <element name="Riposte" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_RIPOSTE">
+        <supports>VDP Maneuver</supports>
+        <description>
+            <p>When a creature misses you with a melee attack, you can use your reaction to make a melee attack with a light weapon against that creature with disadvantage.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">When a creature misses you with a melee attack, you can use your reaction to make a melee attack with a light weapon against that creature with disadvantage.</description>
+        </sheet>
+    </element>
+    <element name="Shield Block" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_SHIELD_BLOCK">
+        <supports>VDP Maneuver</supports>
+        <description>
+            <p>When a creature you can see attacks a target other than you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. You must be holding a shield to perform this maneuver.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">When a creature you can see attacks a target other than you that is within 5 feet of you, you can use your reaction to impose disadvantage on the attack roll. You must be holding a shield to perform this maneuver.</description>
+        </sheet>
+    </element>
+    <element name="Steel Will" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_STEEL_WILL">
+        <supports>VDP Maneuver</supports>
+        <description>
+            <p>When a creature damages you with a nonmagical weapon while you are wearing armor, you can use your reaction to reduce bludgeoning, piercing, or slashing damage by an amount equal to your Strength or Dexterity modifier (your choice).</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">When a creature damages you with a nonmagical weapon while you are wearing armor, you can use your reaction to reduce bludgeoning, piercing, or slashing damage by {{vdp maneuver save:stat}}</description>
+        </sheet>
+    </element>
+    <element name="Sweeping Attack" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_SWEEPING_ATTACK">
+        <supports>VDP Maneuver</supports>
+        <description>
+            <p>When you take the Attack action while wielding a weapon in two hands, you can chose to forgo an attack to make a special sweeping strike. Choose two creatures within 5 feet of each other that are both within your reach. Make a single attack roll against both creatures. For each creature hit, they take damage equal to the weapon’s damage roll.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">When you take the Attack action while wielding a weapon in two hands, you can chose to forgo an attack to make a special sweeping strike. Choose two creatures within 5 feet of each other that are both within your reach. Make a single attack roll against both creatures. For each creature hit, they take damage equal to the weapon’s damage roll.</description>
+        </sheet>
+    </element>
+    <element name="Twin Strike" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_TWIN_STRIKE">
+        <supports>VDP Maneuver</supports>
+        <description>
+            <p>When you take the Attack action on your turn, and have a different light melee weapon which you are proficient with in each hand, you can use your bonus action to make a twin strike with both weapons. Make a single attack roll against a creature within reach of both weapons. If either weapon has the finesse property, you can choose to use your Dexterity modifier in place of your Strength modifier for this attack. You deal damage equal to both weapon’s damage die, but you do not add your ability modifier to the damage of either weapon.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">When you take the Attack action on your turn, and have a different light melee weapon which you are proficient with in each hand, you can use your bonus action to make a twin strike with both weapons. Make a single attack roll against a creature within reach of both weapons. If either weapon has the finesse property, you can choose to use your Dexterity modifier in place of your Strength modifier for this attack. You deal damage equal to both weapon’s damage die, but you do not add your ability modifier to the damage of either weapon.</description>
+        </sheet>
+    </element>
+    <element name="Volley" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_MANEUVERS_VOLLEY">
+        <supports>VDP Maneuver</supports>
+        <description>
+            <p>Choose two creatures within 5 feet of each other that you can see within your ranged weapon’s normal range. You can forgo one of your attacks when you take the Attack action to make a single volley attack against both creatures. You must have enough ammunition for each target. Make a single attack roll against both creatures. For each target, if this attack hits, it takes your weapon’s normal damage but you do not add your ability modifier to the damage roll.</p>
+        </description>
+        <sheet>
+            <description usage="Fighting Maneuver">Choose two creatures within 5 feet of each other that you can see within your ranged weapon’s normal range. You can forgo one of your attacks when you take the Attack action to make a single volley attack against both creatures. You must have enough ammunition for each target. Make a single attack roll against both creatures. For each target, if this attack hits, it takes your weapon’s normal damage but you do not add your ability modifier to the damage roll.</description>
+        </sheet>
+    </element>
+
+    <!--Feats-->
+
+    <element name="Dual Wielder (Fighting Maneuvers)" type="Feat" source="VDP Fighting Maneuvers" id="ID_VDP_FEAT_DUAL_WIELDER">
+        <description>
+            <p>You master fighting with two weapons, gaining the following benefits:</p>
+            <ul>
+                <li>You gain a +1 bonus to AC while you are wielding a seperate melee weapon in each hand.</li>
+                <li>You can use two-weapon fighting or the twin strike maneuver even when the one-handed melee weapons you are wielding aren’t light.</li>
+                <li>The bonus action attack granted by two-weapon fighting can be made as a twin strike maneuver if you know it. This does not count as your one maneuver for the turn.</li>
+                <li>You can draw or stow two one-handed weapons when you would normally be able to draw or stow only one.</li>
+            </ul>
+        </description>
+        <sheet>
+            <description>You gain a +1 bonus to AC while you are wielding a seperate melee weapon in each hand. You can use two-weapon fighting or the twin strike maneuver even when the one-handed melee weapons you are wielding aren’t light. The bonus action attack granted by two-weapon fighting can be made as a twin strike maneuver if you know it. This does not count as your one maneuver for the turn. You can draw or stow two one-handed weapons when you would normally be able to draw or stow only one.</description>
+        </sheet>
+    </element>
+
+    <element name="Martial Adept (Fighting Maneuvers)" type="Feat" source="VDP Fighting Maneuvers" id="ID_VDP_FEAT_MARTIAL_ADEPT">
+        <description>
+            <p>You’ve completed a rigorous martial training to gain the following benefits:</p>
+            <ul>
+                <li>Increase your Strength or Dexterity by 1, to a maximum of 20.</li>
+                <li>Choose a single maneuver from the list of optional features available to the Fighter. You can’t take the same maneuver option more than once, even if you get to choose again. If a maneuver you use requires your target to make a saving throw to resist the maneuver’s effects, the target throw DC equals 8 + your proficiency bonus + your Strength or Dexterity modifier (your choice).</li>
+            </ul>
+        </description>
+        <sheet>
+            <description>Your Maneuver save DC is {{vdp maneuver save:dc}}. Only one can be performed per turn.</description>
+        </sheet>
+        <rules>
+            <select type="Ability Score Improvement" name="Ability Score Increase (Martial Adept)" supports="ID_PHB_FEAT_ASI_STRENGTH|ID_PHB_FEAT_ASI_DEXTERITY" />
+            <select type="Class Feature" name="Fighting Maneuver (Martial Adept)" supports="VDP Maneuver" />
+        </rules>
+    </element>
+
+    <!--Source-->
+
+    <element name="VDP Fighting Maneuvers" type="Source" source="VDP Fighting Maneuvers" id="ID_VDP_SOURCE_FIGHTING_MANEUVERS">
+        <description>
+            <![CDATA[<p>Presented here is a variant rule for Fighting Styles, called Fighting Maneuvers. This variant operates on two premises: that static bonuses from Fighting Styles are boring and contrary to 5th Edition’s design, and the Battlemaster’s Maneuvers should have been a core Fighter feature from the start.</p>
+            <p>The following Fighting Style feature that replaces the feature of the same name on the Fighter, Paladin, and Ranger. This can also apply to 3rd party classes that have the Fighting Style feature.</p>]]>
+        </description>
+        <setters>
+            <set name="abbreviation">VDP</set>
+            <set name="url">https://www.drivethrurpg.com/product/248600/VDP-5E-Fighting-Maneuvers</set>
+            <set name="image">https://www.drivethrurpg.com/images/13388/248600.png</set>
+            <set name="author" abbreviation="VDP" url="http://dnd.wizards.com">Vorpal Dice Press</set>
+            <set name="official">false</set>
+            <set name="supplement">false</set>
+            <set name="playtest">false</set>
+            <set name="third-party">true</set>
+            <set name="homebrew">false</set>
+            <set name="league">false</set>
+            <set name="release">20200118</set>
+        </setters>
+    </element>
+    
+</elements>
