@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<index>
+	<info>
+		<update version="0.0.1">
+			<file name="uncategorized.index" url="https://raw.githubusercontent.com/Zenoverlordian/Aurora-Builder-Uncategorized/main/uncategorized.index" />
+		</update>
+	</info>
+	<files>
+    <file name="eleazzaar-detect-balance.xml" url="https://raw.githubusercontent.com/Zenoverlordian/Aurora-Builder-Uncategorized/main/eleazzaar-detect-balance.xml" />
+    <file name="vorpal-dice-press-maneuvers.xml" url="https://raw.githubusercontent.com/Zenoverlordian/Aurora-Builder-Uncategorized/main/vorpal-dice-press-maneuvers.xml" />
+	</files>
+</index>
