@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <elements>
+    <info>
+        <name></name>
+        <update version="1.0.0">
+            <file name="vorpal-dice-press-maneuvers.xml" url="https://raw.githubusercontent.com/Zenoverlordian/Aurora-Builder-Uncategorized/main/vorpal-dice-press-maneuvers.xml" />
+        </update>
+    </info>
     
     <!--Feature-->
 
     <element name="Fighting Maneuvers" type="Class Feature" source="VDP Fighting Maneuvers" id="ID_VDP_CLASS_FEATURE_FIGHTINGSTYLE_FIGHTING_MANEUVERS">
-		<supports>Fighting Style, Fighter, Paladin, Artificer, Ranger, Warlord_Paragon</supports>
+		<supports>Fighting Style, Fighter, Paladin, Artificer, Ranger, Warlord_Paragon, Atavist</supports>
         <requirements>!ID_WOTC_PHB_ARCHETYPE_FIGHTER_BATTLE_MASTER</requirements>
 		<description>
 			<p>The maneuvers you learn from these fighting styles (detailed in the Maneuvers section below) are intricate and only one can be performed per turn.</p>

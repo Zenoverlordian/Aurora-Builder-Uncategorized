@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <elements>
+    <info>
+        <name></name>
+        <update version="1.0.0">
+            <file name="eleazzaar-detect-balance.xml" url="https://raw.githubusercontent.com/Zenoverlordian/Aurora-Builder-Uncategorized/main/eleazzaar-detect-balance.xml" />
+        </update>
+    </info>
 
     <!--UPDATED 2020-12-16-->
 
